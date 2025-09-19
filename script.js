@@ -11,6 +11,10 @@ function Book(id, title, author, category, genre, pages, yearPublished, read) {
   this.read = read;
 }
 
+Book.prototype.toggleRead = function() {
+  this.read = !this.read;
+}
+
 function addBookToLibrary(title, author, category, genre, pages, yearPublished, read) {
   const uuid = crypto.randomUUID();
   const book = new Book(uuid, title, author, category, genre, pages, yearPublished, read);
@@ -81,7 +85,7 @@ function toggleStatus(e) {
   const card = e.currentTarget.closest(".book-card");
 
   const book = myLibrary.find((element) => element.id === card.dataset.id);
-  book.read = !book.read;
+  book.toggleRead();
 
   card.dataset.status = book.read ? "read" : "unread";
 

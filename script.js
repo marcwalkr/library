@@ -113,3 +113,39 @@ function renderLibrary() {
     container.appendChild(card);
   }
 }
+
+function renderLastBook() {
+  const container = document.querySelector("#book-container");
+
+  const card = createCard(myLibrary.at(-1));
+  container.appendChild(card);
+}
+
+const newBookButton = document.querySelector("#new-book-button");
+const newBookDialog = document.querySelector("#new-book-dialog");
+const newBookForm = document.querySelector("#new-book-form");
+
+newBookButton.addEventListener("click", () => {
+  newBookDialog.showModal();
+});
+
+newBookDialog.addEventListener("close", () => {
+  if (newBookDialog.returnValue === "confirm") {
+    const data = new FormData(newBookForm);
+    const entries = Object.fromEntries(data.entries());
+
+    addBookToLibrary(
+      entries.title, 
+      entries.author, 
+      entries.category, 
+      entries.genre, 
+      Number(entries.pages), 
+      Number(entries.yearPublished), 
+      data.has("read")
+    );
+
+    renderLastBook();
+  }
+
+  newBookForm.reset();
+});

@@ -21,14 +21,18 @@ function addBookToLibrary(title, author, category, genre, pages, yearPublished, 
   myLibrary.push(book);
 }
 
-function appendDescriptionPair(label, value, parent) {
-  const labelElement = document.createElement("dt");
-  labelElement.textContent = label;
-  parent.appendChild(labelElement);
+function appendTableRow(label, value, parent) {
+  const row = document.createElement("tr");
 
-  const valueElement = document.createElement("dd");
+  const labelElement = document.createElement("th");
+  labelElement.textContent = label;
+  row.appendChild(labelElement);
+
+  const valueElement = document.createElement("td");
   valueElement.textContent = value;
-  parent.appendChild(valueElement);
+  row.appendChild(valueElement);
+  
+  parent.appendChild(row);
 }
 
 function appendButton(text, classes, clickFunction, parent) {
@@ -55,14 +59,14 @@ function createCard(book) {
     author.textContent = book.author;
     card.appendChild(author);
 
-    const detailGrid = document.createElement("dl");
-    detailGrid.classList.add("detail-grid");
-    card.appendChild(detailGrid);
+    const detailTable = document.createElement("table");
+    detailTable.classList.add("detail-table");
+    card.appendChild(detailTable);
 
-    appendDescriptionPair("Category", book.category, detailGrid);
-    appendDescriptionPair("Genre", book.genre, detailGrid);
-    appendDescriptionPair("Pages", book.pages, detailGrid);
-    appendDescriptionPair("Year Published", book.yearPublished, detailGrid);
+    appendTableRow("Category", book.category, detailTable);
+    appendTableRow("Genre", book.genre, detailTable);
+    appendTableRow("Pages", book.pages, detailTable);
+    appendTableRow("Year Published", book.yearPublished, detailTable);
 
     const statusBadge = document.createElement("div");
     statusBadge.classList.add("status-badge");

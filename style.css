@@ -10,6 +10,7 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  font-family: "Times New Roman", Times, serif;
 }
 
 #new-book-dialog {

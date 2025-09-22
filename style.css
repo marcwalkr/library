@@ -32,6 +32,74 @@ body {
   background-color: #5E503F;
 }
 
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #F2DCB1;
+  border-radius: 0.5rem;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.book-title {
+  font-size: 1.5rem;
+}
+
+.book-author {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.detail-table {
+  align-self: stretch;
+  border-collapse: collapse;
+  border: 1px solid #5E503F;
+}
+
+.detail-table th {
+  text-align: left;
+  background-color: #F2DCB1;
+  filter: brightness(90%);
+}
+
+.detail-table th,
+.detail-table td {
+  font-size: 1.2rem;
+  padding: 0.3rem 1rem;
+  border-bottom: 1px solid #5E503F;
+}
+
+.status-badge {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  min-width: 8rem;
+}
+
+.book-card[data-status="read"] .status-badge {
+  color: black;
+  background-color: #16DB65;
+}
+
+.book-card[data-status="unread"] .status-badge {
+  color: white;
+  background-color: #6E6E6E;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.card-buttons button {
+  flex: 1;
+  white-space: nowrap;
+}
+
 button {
   font-family: inherit;
   font-size: 1.2rem;

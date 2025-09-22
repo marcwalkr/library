@@ -70,7 +70,7 @@ function createCard(book) {
     card.appendChild(statusBadge);
 
     const buttons = document.createElement("div");
-    buttons.classList.add("button-container");
+    buttons.classList.add("card-buttons");
     card.appendChild(buttons);
 
     const markButtonText = book.read ? "Mark Unread" : "Mark Read";

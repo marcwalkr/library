@@ -28,6 +28,10 @@ body {
   margin: 2rem;
 }
 
+#new-book-title {
+  align-self: center;
+}
+
 .text-field {
   display: flex;
   font-size: 1.2rem;

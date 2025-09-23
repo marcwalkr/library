@@ -41,6 +41,8 @@ function appendButton(text, classes, clickFunction, parent) {
   button.classList.add(...[].concat(classes));
   button.addEventListener("click", clickFunction);
   parent.appendChild(button);
+
+  return button;
 }
 
 function createCard(book) {
@@ -78,8 +80,14 @@ function createCard(book) {
     card.appendChild(buttons);
 
     const markButtonText = book.read ? "Mark Unread" : "Mark Read";
-    appendButton(markButtonText, ["mark-status-button"], toggleStatus, buttons);
-    appendButton("Remove", ["remove-button"], removeBook, buttons);
+    const markButton = appendButton(markButtonText, ["mark-status-button"], toggleStatus, buttons);
+    markButton.setAttribute(
+      "aria-label", 
+      book.read ? `Mark "${book.title}" as unread` : `Mark "${book.title}" as read`
+    );
+
+    const removeButton = appendButton("Remove", ["remove-button"], removeBook, buttons);
+    removeButton.setAttribute("aria-label", `Remove "${book.title}" from library`);
 
     return card;
 }

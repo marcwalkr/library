@@ -109,22 +109,20 @@ function removeBook(e) {
 }
 
 function renderLibrary() {
-  const container = document.querySelector("#book-container");
-  container.innerHTML = "";
+  bookContainer.innerHTML = "";
 
   for (const book of myLibrary) {
     const card = createCard(book);
-    container.appendChild(card);
+    bookContainer.appendChild(card);
   }
 }
 
 function renderLastBook() {
-  const container = document.querySelector("#book-container");
-
   const card = createCard(myLibrary.at(-1));
-  container.appendChild(card);
+  bookContainer.appendChild(card);
 }
 
+const bookContainer = document.querySelector("#book-container");
 const newBookButton = document.querySelector("#new-book-button");
 const newBookDialog = document.querySelector("#new-book-dialog");
 const newBookForm = document.querySelector("#new-book-form");

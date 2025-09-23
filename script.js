@@ -79,7 +79,6 @@ function createCard(book) {
 
     const markButtonText = book.read ? "Mark Unread" : "Mark Read";
     appendButton(markButtonText, ["mark-status-button"], toggleStatus, buttons);
-
     appendButton("Remove", ["remove-button"], removeBook, buttons);
 
     return card;
@@ -87,15 +86,12 @@ function createCard(book) {
 
 function toggleStatus(e) {
   const card = e.currentTarget.closest(".book-card");
-
   const book = myLibrary.find((element) => element.id === card.dataset.id);
-  book.toggleRead();
 
+  book.toggleRead();
   card.dataset.status = book.read ? "read" : "unread";
 
-  const statusBadge = card.querySelector(".status-badge");
-  statusBadge.textContent = book.read ? "Read" : "Unread";
-
+  card.querySelector(".status-badge").textContent = book.read ? "Read" : "Unread";
   e.currentTarget.textContent = book.read ? "Mark Unread" : "Mark Read";
 }
 

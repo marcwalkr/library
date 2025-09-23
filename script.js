@@ -103,7 +103,7 @@ function removeBook(e) {
   const card = e.currentTarget.closest(".book-card");
 
   const index = myLibrary.findIndex((element) => element.id === card.dataset.id);
-  myLibrary.splice(index, 1);
+  if (index !== -1) myLibrary.splice(index, 1);
 
   card.remove();
 }
